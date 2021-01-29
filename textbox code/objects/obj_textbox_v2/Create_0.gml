@@ -1,6 +1,7 @@
 enum textstates
 {
 	NONE,
+	WRAPPED,
 	QUESTION,
 	ANSWER,
 	SHAKY,
@@ -36,6 +37,11 @@ talkanimate = true;
 lastpage = page;
 answerindex = 0;
 numb_of_answers = 0;
+
+//audio stuffs
+audio_spd = 1; 
+
+stop_audio = false;
 
 drawbeginningx = 10;
 drawbeginningy = 10;

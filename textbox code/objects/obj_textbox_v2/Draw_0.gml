@@ -107,6 +107,10 @@ for(var i = 0; i < array_length(textmessage[page]);i++)
 		case textstates.NONE:
 			draw_text(beginx,beginy,currstr);
 			break;
+			
+		case textstates.WRAPPED:
+			draw_text_ext(beginx,beginy,currstr,string_height(currstr)+2,textmessage[page,i][data.ARG1]);
+			break;
 		
 		case textstates.SHAKY:
 			var length  = 0;
@@ -179,9 +183,12 @@ for(var i = 0; i < array_length(textmessage[page]);i++)
 					}
 				}
 			}
-			
-			//beware magic numbers!
-			draw_text(drawbeginningx+emoteshift+5,beginy+20,currstr);
+
+			//check if whole question has been asked, then draw the answers
+			if(floor(talktime)>string_length(textmessage[page,0][data.STRNG]))
+			{
+				draw_text(drawbeginningx+emoteshift+5,beginy+20,str);
+			}
 			
 			beginx -= string_width(str);
 			beginy += 20;
@@ -220,6 +227,7 @@ if(effect != textstates.ANSWER)
 	{
 		if(talktime > truelength)
 		{
+			stop_audio = true;
 			if(keyboard_check_pressed(input_key))
 			{
 				if(page + 1 >= numb_of_pages)or(textmessage[page+1,0][data.STRNG]==noone)
@@ -231,6 +239,10 @@ if(effect != textstates.ANSWER)
 					page += 1;
 				}
 			}
+		}
+		else
+		{
+			stop_audio = false;
 		}
 	}
 	else

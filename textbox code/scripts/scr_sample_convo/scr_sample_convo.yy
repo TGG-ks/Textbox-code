@@ -6,7 +6,7 @@
     "path": "folders/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_initialize_values",
+  "name": "scr_sample_convo",
   "tags": [],
   "resourceType": "GMScript",
 }
